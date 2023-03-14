@@ -3,6 +3,6 @@
 
 # Epidemic Escapes API specification
 
-This is the OpenAPI specification used in the [Epidemic Escapes](https://github.com/alexandrelamberty/epidemic-escapes) project.
+OpenAPI specification used in the [Epidemic Escapes](https://github.com/alexandrelamberty/epidemic-escapes) project.
 
 See the [documentation](https://alexandrelamberty.github.io/epidemic-escapes-api-spec/).

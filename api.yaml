@@ -1,0 +1,1128 @@
+openapi: 3.1.0
+x-stoplight:
+  id: 6222bnfr1oi2o
+info:
+  title: Epidemic Escapes - Bookstore
+  version: "1.0"
+servers:
+  - url: "http://localhost:3000"
+tags:
+  - name: Auth
+    description: Auth
+  - name: Book
+    description: Book
+  - name: Order
+    description: Order
+  - name: Publisher
+    description: Publisher
+  - name: Author
+    description: Author
+  - name: Genre
+    description: Genre
+  - name: User
+    description: User
+paths:
+  /auth/register:
+    post:
+      summary: Register a user
+      operationId: post-auth-register
+      tags:
+        - Auth
+      responses:
+        "200":
+          $ref: "#/components/responses/RegisterUserSuccess"
+      requestBody:
+        $ref: "#/components/requestBodies/RegisterUser"
+  /auth/login:
+    post:
+      summary: Login a user
+      operationId: post-auth-login
+      tags:
+        - Auth
+      responses:
+        "200":
+          $ref: "#/components/responses/LoginUserSuccess"
+      requestBody:
+        $ref: "#/components/requestBodies/LoginUser"
+  /books:
+    get:
+      summary: Get all Books
+      tags:
+        - Book
+      responses:
+        "200":
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    x-stoplight:
+                      id: icuw1yjc25st8
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Book"
+                      x-stoplight:
+                        id: gktabe9wixtie
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 9hppx5wopt9e4
+      operationId: get-books
+    post:
+      summary: ""
+      operationId: post-books
+      tags:
+        - Book
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Book"
+                    x-stoplight:
+                      id: s9ptub89l79d3
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 9w7gffha8sppm
+      requestBody:
+        $ref: "#/components/requestBodies/CreateBook"
+  "/books/{bookId}":
+    parameters:
+      - schema:
+          type: string
+        name: bookId
+        in: path
+        required: true
+    get:
+      summary: Get a book by Id
+      tags:
+        - Book
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Book"
+                    x-stoplight:
+                      id: 1cmk5h26bg96a
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: ry993exgsmoib
+      operationId: get-books-bookId
+    patch:
+      summary: Update a book
+      operationId: patch-books-bookId
+      tags:
+        - Book
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    x-stoplight:
+                      id: w0evmi5zwsvj7
+  /authors:
+    get:
+      summary: Get all authors
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    x-stoplight:
+                      id: t0lc6rbsjfo8l
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Author"
+                      x-stoplight:
+                        id: 5doncmr74zrv5
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: sk32h31yp8cmi
+      operationId: get-authors
+    post:
+      summary: Create an author
+      operationId: post-authors
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Author"
+                    x-stoplight:
+                      id: 6ourjuqj7aigm
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: hst1zn28fsxx9
+      requestBody:
+        $ref: "#/components/requestBodies/CreateAuthor"
+  "/authors/{authorId}":
+    parameters:
+      - schema:
+          type: string
+        name: authorId
+        in: path
+        required: true
+    get:
+      summary: Get an author by id
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Author"
+                    x-stoplight:
+                      id: 11hgva3e7bjf3
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: ckr7clszw2t4o
+      operationId: get-authors-authorId
+    patch:
+      summary: Update an author
+      operationId: patch-authors-authorId
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Author"
+                    x-stoplight:
+                      id: 01mtacgg13yng
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: pu9yhrk1c5av4
+                  "":
+                    type: string
+                    x-stoplight:
+                      id: j7v38404upygq
+  /genres:
+    get:
+      summary: Get all genres
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    x-stoplight:
+                      id: q06um4dnmfi0x
+                    items:
+                      $ref: "#/components/schemas/Genre"
+                      x-stoplight:
+                        id: 9vym9dpi1911a
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: y4udvqa27k7px
+      operationId: get-genre
+    parameters: []
+    post:
+      summary: Create a new genre
+      operationId: post-genres
+      tags:
+        - Author
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Genre"
+                    x-stoplight:
+                      id: cvu7u1y5gsh6x
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 5ln4xd79obezx
+      requestBody:
+        $ref: "#/components/requestBodies/CreateGenre"
+  "/genres/{genreId}":
+    parameters:
+      - schema:
+          type: string
+        name: genreId
+        in: path
+        required: true
+    get:
+      summary: Get a genre by id
+      tags:
+        - Genre
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Genre"
+                    x-stoplight:
+                      id: 0uydw0vs66u6u
+      operationId: get-genres-genreId
+    patch:
+      summary: Update a genre
+      operationId: patch-genres-genreId
+      tags:
+        - Genre
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Genre"
+                    x-stoplight:
+                      id: p406qp87w2ifc
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 8a0wcbvia7t0c
+  /publishers:
+    get:
+      summary: Get all publishers
+      tags:
+        - Genre
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    x-stoplight:
+                      id: v1f8u2t44qc7d
+                    items:
+                      $ref: "#/components/schemas/Publisher"
+                      x-stoplight:
+                        id: tbvypmbgkdpno
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: yx7dm7fvi6xr3
+      operationId: get-publishers
+    post:
+      summary: Create a publisher
+      operationId: post-publishers
+      tags:
+        - Publisher
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Publisher"
+                  statusCode:
+                    type: string
+      requestBody:
+        $ref: "#/components/requestBodies/CreatePublisher"
+  "/publishers/{publisherId}":
+    parameters:
+      - schema:
+          type: string
+        name: publisherId
+        in: path
+        required: true
+    get:
+      summary: Get a publisher by id
+      tags:
+        - Publisher
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Publisher"
+                    x-stoplight:
+                      id: zeltbn1gvt3gg
+      operationId: get-publishers-publisherId
+    patch:
+      summary: Update a publisher
+      operationId: patch-publishers-publisherId
+      tags: ["Publisher"]
+      responses:
+        "200":
+          description: OK
+  /orders:
+    get:
+      summary: Get all orders
+      tags:
+        - Order
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    x-stoplight:
+                      id: mexjz65chubsc
+                    items:
+                      $ref: "#/components/schemas/Order"
+                      x-stoplight:
+                        id: epm8fj1upvous
+      operationId: get-orders
+    post:
+      summary: Create an order
+      operationId: post-orders
+      tags:
+        - Order
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Order"
+                    x-stoplight:
+                      id: fvtunmojt2gh9
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 0c9q7nhf9yhws
+      requestBody:
+        $ref: "#/components/requestBodies/CreateOrder"
+      parameters: []
+  "/orders/{orderId}":
+    parameters:
+      - schema:
+          type: string
+        name: orderId
+        in: path
+        required: true
+    get:
+      summary: Get an order by id
+      tags:
+        - Order
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Order"
+                    x-stoplight:
+                      id: t53k6needzt5w
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: s1bs7wkrdgabn
+      operationId: get-orders-orderId
+    patch:
+      summary: Update an order by id
+      operationId: patch-orders-orderId
+      tags: ["Order"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/Order"
+                    x-stoplight:
+                      id: 8uxj0qgi8q9eh
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: 38bv9nuu9h1k1
+  /users:
+    parameters: []
+    get:
+      summary: Get all users
+      operationId: get-users
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    $ref: "#/components/schemas/User"
+                    x-stoplight:
+                      id: bjmh8zpr6qunt
+  "/users/{userId}":
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: Id of an existing user.
+    get:
+      summary: Get User Info by User ID
+      tags:
+        - User
+      responses:
+        "200":
+          description: User Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/User"
+                    x-stoplight:
+                      id: pq8uj0nssir5h
+                  statusCode:
+                    type: string
+                    x-stoplight:
+                      id: hozedisq2rujy
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: 142
+                    firstName: Alice
+                    lastName: Smith
+                    email: alice.smith@gmail.com
+                    dateOfBirth: "1997-10-31"
+                    emailVerified: true
+                    signUpDate: "2019-08-24"
+        "404":
+          description: User Not Found
+      operationId: get-users-userId
+      description: Retrieve the information of the user with the matching user ID.
+    patch:
+      summary: Update User Information
+      operationId: patch-users-userId
+      tags:
+        - User
+      responses:
+        "200":
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User Not Found
+        "409":
+          description: Email Already Taken
+      description: Update the information of an existing user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                  description: "If a new email is given, the user's email verified property will be set to false."
+                dateOfBirth:
+                  type: string
+            examples:
+              Update First Name:
+                value:
+                  firstName: Rebecca
+              Update Email:
+                value:
+                  email: rebecca@gmail.com
+              Update Last Name & Date of Birth:
+                value:
+                  lastName: Baker
+                  dateOfBirth: "1985-10-02"
+        description: Patch user properties to update.
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      examples: []
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          x-stoplight:
+            id: ycpi3gb2o3eu8
+        createDate:
+          type: string
+          format: date
+          description: The date that the user was created.
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - role
+    Book:
+      title: Book
+      x-stoplight:
+        id: vtulew501o8cx
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+          x-stoplight:
+            id: 7ok6p3pmmn456
+        description:
+          type: string
+          x-stoplight:
+            id: 9ancxp3ynuwoz
+        rating:
+          type: integer
+          x-stoplight:
+            id: 40bk8aa62hsrb
+          maximum: 5
+          minimum: 0
+        stock:
+          type: integer
+          x-stoplight:
+            id: 02n8rykog6keg
+        isbn10:
+          type: string
+          x-stoplight:
+            id: lfubrfacfku2i
+        isbn13:
+          type: string
+          x-stoplight:
+            id: ebpu2h85sod8s
+        author:
+          x-stoplight:
+            id: 3id2ozrmt5yye
+          type: array
+          items:
+            $ref: "#/components/schemas/Publisher"
+            x-stoplight:
+              id: 2cwbpoieawvp1
+        publisher:
+          $ref: "#/components/schemas/Publisher"
+          x-stoplight:
+            id: q3simh4dcc0ty
+      required:
+        - id
+        - title
+        - description
+        - rating
+        - stock
+        - isbn13
+    Author:
+      title: Author
+      x-stoplight:
+        id: 9j62nsfqk6c5w
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+          x-stoplight:
+            id: 1p2yjfjiimnky
+        lastName:
+          type: string
+          x-stoplight:
+            id: 4hipbas9o3lay
+        books:
+          x-stoplight:
+            id: oyrqdpa0ehuzh
+          type: array
+          items:
+            $ref: "#/components/schemas/Book"
+            x-stoplight:
+              id: ks50iqh1spnrj
+      required:
+        - id
+        - firstName
+        - lastName
+    Order:
+      title: Order
+      x-stoplight:
+        id: y8th6fv81bpzh
+      type: object
+      properties:
+        id:
+          type: string
+        subtotal:
+          type: number
+          x-stoplight:
+            id: whc464p1o6qm1
+        books:
+          type: array
+          x-stoplight:
+            id: o81pvfg7bqho0
+          items:
+            x-stoplight:
+              id: u4bdjl04iteyq
+            type: object
+            properties:
+              quantity:
+                type: integer
+                x-stoplight:
+                  id: wl7omooeual93
+              book:
+                $ref: "#/components/schemas/Book"
+                x-stoplight:
+                  id: bcqvudhl8bdjk
+        user:
+          $ref: "#/components/schemas/User"
+          x-stoplight:
+            id: kp56vt9ypnzgl
+      required:
+        - id
+        - subtotal
+        - books
+        - user
+    Publisher:
+      title: Publisher
+      x-stoplight:
+        id: 54xjonnkxa1g5
+      type: object
+      description: Book publisher
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          x-stoplight:
+            id: o8tygtmdgso02
+        books:
+          x-stoplight:
+            id: pqvr8qvsrn0s1
+          type: array
+          items:
+            $ref: "#/components/schemas/Book"
+            x-stoplight:
+              id: hmkuttd8n13dg
+      required:
+        - id
+        - name
+    Genre:
+      title: Genre
+      x-stoplight:
+        id: 750w10ggyrgd5
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          x-stoplight:
+            id: 7s3dmylmede8n
+    Address:
+      title: Address
+      x-stoplight:
+        id: s5vw4b3ys2s3t
+      type: object
+      properties:
+        id:
+          type: string
+        street:
+          type: string
+          x-stoplight:
+            id: ss5nqho7djmkv
+        streetNumber:
+          type: integer
+          x-stoplight:
+            id: fiynrax6nzi9d
+        city:
+          type: string
+          x-stoplight:
+            id: x49vc7u0e0erw
+        postalCode:
+          type: integer
+          x-stoplight:
+            id: lmjkph7d95pjx
+        country:
+          type: string
+          x-stoplight:
+            id: 5b4exp37j6m8s
+      required:
+        - id
+        - street
+        - streetNumber
+        - city
+        - postalCode
+        - country
+    Error:
+      title: Error
+      x-stoplight:
+        id: ullmdvda94ogh
+      type: object
+      description: Schema for an error response body
+      properties:
+        code:
+          type: string
+          x-stoplight:
+            id: bqdp5q1i8zdz8
+          description: The error code
+        message:
+          type: string
+          x-stoplight:
+            id: 0t28meem32h99
+          description: The error message
+      required:
+        - code
+        - message
+  requestBodies:
+    RegisterUser:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+                x-stoplight:
+                  id: o79ipjtoahere
+              lastName:
+                type: string
+                x-stoplight:
+                  id: r2ffmsbatacgw
+              email:
+                type: string
+                x-stoplight:
+                  id: cwk5u7sm3k1cu
+              password:
+                type: string
+                x-stoplight:
+                  id: bx307jmiemyc1
+              address:
+                type: object
+                x-stoplight:
+                  id: ae4epft52g1nr
+                required:
+                  - street
+                  - streetNumber
+                  - city
+                  - postalCode
+                  - country
+                properties:
+                  street:
+                    type: string
+                    x-stoplight:
+                      id: 3c2zkolyhdis3
+                  streetNumber:
+                    type: string
+                    x-stoplight:
+                      id: oeuod3v7sbg79
+                  city:
+                    type: string
+                    x-stoplight:
+                      id: 9a4s57zrwz2yu
+                  postalCode:
+                    type: string
+                    x-stoplight:
+                      id: wxzrscb6pf3qt
+                  country:
+                    type: string
+                    x-stoplight:
+                      id: nsf2crm6v0f4j
+            required:
+              - firstName
+              - lastName
+              - email
+              - password
+              - address
+    LoginUser:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                x-stoplight:
+                  id: lbndjvfk8f5kl
+                description: The email of the user
+              password:
+                type: string
+                x-stoplight:
+                  id: mnfxwxyzrypej
+                description: The password of the user
+            required:
+              - email
+              - password
+    CreateBook:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                x-stoplight:
+                  id: q7j6bhtqj6bko
+                description: The title of the book
+              description:
+                type: string
+                x-stoplight:
+                  id: tyu7tzaazi2ce
+                description: The description of the book
+              isbn:
+                type: string
+                x-stoplight:
+                  id: 34gwf0i8pu5cp
+                description: The isbn 10
+              price:
+                type: string
+                x-stoplight:
+                  id: fkechqyju1zcz
+                description: The price of the book
+              cover:
+                type: string
+                x-stoplight:
+                  id: 8gkbvnij4f07j
+                description: The cover of the book
+              genreId:
+                x-stoplight:
+                  id: at6823izkmo4n
+                type: string
+                description: The genre id of the book
+              publisherId:
+                type: string
+                x-stoplight:
+                  id: j3955qvxb4hd5
+                description: The publisher id of the book
+              authors:
+                type: array
+                x-stoplight:
+                  id: c6zulrlxj7gq1
+                description: The authors of the book
+                items:
+                  x-stoplight:
+                    id: q0xlfh1h29k2r
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      x-stoplight:
+                        id: 31wd05s5x5bs9
+                      description: The author's id
+            required:
+              - title
+              - description
+              - isbn
+    CreatePublisher:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                x-stoplight:
+                  id: 9swbgq063e5nd
+                description: The name of the publisher
+    CreateGenre:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                x-stoplight:
+                  id: o5f87utojdhkh
+                description: The name of the genre
+    CreateAuthor:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+                x-stoplight:
+                  id: iuo8h33me8w23
+                description: The first name of the Author
+              lastName:
+                type: string
+                x-stoplight:
+                  id: qi1t93f5r4mlk
+                description: The last name of the Author
+            required:
+              - firstName
+              - lastName
+    CreateOrder:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                x-stoplight:
+                  id: 6jsm8tvrdimx0
+                items:
+                  x-stoplight:
+                    id: hyksnk0wuij5h
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      x-stoplight:
+                        id: yq1ojf9edmsn8
+                      description: The id of the ordered book
+                    quantity:
+                      type: string
+                      x-stoplight:
+                        id: rn9o64yygecur
+                      description: The quantity ordered
+                  required:
+                    - id
+                    - quantity
+  responses:
+    Unauthorized:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+    RegisterUserSuccess:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                x-stoplight:
+                  id: 3w6qtelbjdk0k
+                properties:
+                  token:
+                    type: string
+                    x-stoplight:
+                      id: qeh9qd2n6mkio
+                  user:
+                    $ref: "#/components/schemas/User"
+                    x-stoplight:
+                      id: 2whsxgmmpgd19
+              statusCode:
+                type: string
+                x-stoplight:
+                  id: h0kl1m8pa23i9
+    LoginUserSuccess:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  type: string
+                  user:
+                    $ref: "#/components/schemas/User"
+                    x-stoplight:
+                      id: 0fonac5t6eta3
+              statusCode:
+                type: string
+                x-stoplight:
+                  id: 9ub2hzosr7fgt
+  parameters:
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: string
+  securitySchemes: {}

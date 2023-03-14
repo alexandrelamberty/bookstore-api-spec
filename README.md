@@ -1,5 +1,5 @@
-[![Lint](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/lint.yml/badge.svg)](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/lint.yml)
-[![Doc](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/documentation.yml/badge.svg)](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/documentation.yml)
+[![Lint](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/lint.yaml/badge.svg)](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/lint.yaml)
+[![Docs](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/documentation.yaml/badge.svg)](https://github.com/alexandrelamberty/epidemic-escapes-api-spec/actions/workflows/documentation.yaml)
 
 # Epidemic Escapes API specification
 
